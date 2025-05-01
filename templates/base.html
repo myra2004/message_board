@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Sayt logotipi</h1>
+        <nav>
+            <a href="/">Bosh sahifa</a> |
+            <a href="/psycho/">Psycho</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Kontent bu yerga keladi -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Muqaddas loyihasi</p>
+    </footer>
+</body>
+</html>
