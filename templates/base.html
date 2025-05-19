@@ -1,28 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}My Site{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
-<body>
-    <header>
-        <h1>Sayt logotipi</h1>
-        <nav>
-            <a href="/">Bosh sahifa</a> |
-            <a href="/psycho/">Psycho</a>
-        </nav>
-    </header>
+<!-- templates/base.html -->
+{% load static %}
+<html>
+    <head>
+        <title>Django blog</title>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400"
+            rel="stylesheet">
+        <link href="{% static 'css/base.css' %}" rel="stylesheet" s>
+    </head>
+    <body>
 
-    <main>
+        <div>
+            <header>
+                <div class="nav-left">
+                    <h1><a href="{% url 'home' %}">Django blog</a></h1>
+                </div>
+
+                <div class="nav-right">
+                    <a href="{% url 'post_new' %}">+ New Blog Post</a>
+                </div>
+
+                <p>You are not logged in.</p>
+                <a href="{% url 'login' %}">Log In</a> |
+                <a href="{% url 'signup' %}">Sign Up</a>
+
+            </header>
+
+            {% if user.is_authenticated %}
+                <p>Hi {{ user.username }}!</p>
+                <p><a href="{% url 'logout' %}">Log out</a></p>
+            {% else %}
+                <p>You are not logged in.</p>
+                <a href="{% url 'login' %}">Log In</a>
+            {% endif %}
+
         {% block content %}
-        <!-- Kontent bu yerga keladi -->
-        {% endblock %}
-    </main>
+        {% endblock content %}
 
-    <footer>
-        <p>&copy; 2025 Muqaddas loyihasi</p>
-    </footer>
-</body>
+        </div>
+
+    </body>
+
 </html>
