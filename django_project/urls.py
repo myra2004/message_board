@@ -8,4 +8,5 @@ urlpatterns = [
     # path("accounts/", include("accounts.urls")),
     # path("", include("blog.urls")),
     path('pages/', include('pages.urls')),
+    path('posts/', include('posts.urls'))
 ]
